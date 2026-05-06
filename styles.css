@@ -1,0 +1,440 @@
+/* 🌐 BASE */
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+  font-family: Arial;
+}
+
+/* 🎥 CÁMARA */
+.camera img {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 🔋 BATERÍA */
+#battery {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 10px;
+}
+
+/* 🎥 REC */
+.record-container {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+#recordBtn {
+  width: 110px;
+  height: 65px;
+  border: 2px solid red;
+  border-radius: 15px;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.recording {
+  background: red;
+  animation: pulse 1s infinite;
+}
+
+/* 📷 ESTADO CÁMARA */
+#camStatusBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  width: 110px;
+  text-align: center;
+  color: cyan;
+  transition: 0.3s;
+}
+
+#camStatusBox.connected {
+  color: lime;
+  box-shadow: 0 0 15px lime;
+}
+
+#camStatusBox.connecting {
+  color: yellow;
+  animation: blink 1s infinite;
+}
+
+#camStatusBox.error {
+  color: #ff4d4d;
+  box-shadow: 0 0 15px red;
+}
+
+/* 🔝 TOP BAR */
+.top-bar {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  height: 70px;
+}
+
+/* 🔵 BLUETOOTH */
+.bluetooth {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bt-disconnected {
+  color: red;
+}
+
+.bt-connecting {
+  color: yellow;
+  animation: blink 1s infinite;
+}
+
+.bt-connected {
+  color: lime;
+}
+
+/* ⚡ VELOCIDAD */
+.speed-control {
+  position: absolute;
+  left: 75%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 12px;
+  border-radius: 15px;
+  color: white;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.speed-control label {
+  font-size: 13px;
+  color: cyan;
+  margin-bottom: 3px;
+}
+
+#speedSlider {
+  width: 140px;
+}
+
+#speedValue {
+  color: cyan;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* ⚙️ CONFIG BTN */
+.config-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+}
+
+/* 🔘 BOTONES */
+button {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 2px solid cyan;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button span {
+  font-size: 40px;
+}
+
+button:active {
+  transform: scale(0.85);
+  box-shadow: 0 0 25px cyan;
+}
+
+#forward,
+#backward,
+#left,
+#right {
+  font-size: 50px;
+}
+
+.control-active {
+  box-shadow: 0 0 40px cyan;
+}
+
+/* 🔥 BOTÓN ACTIVO */
+.active-btn {
+  background: rgba(0, 255, 0, 0.15);
+  border-color: lime;
+  color: lime;
+  animation: ledPulse 1.2s infinite;
+}
+
+.active-btn span {
+  color: lime;
+  text-shadow: 0 0 20px lime;
+}
+
+.active-btn small {
+  color: lime;
+  font-weight: bold;
+}
+
+/* 🎮 CONTROLES */
+.left {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+}
+
+/* ⚙️ PANEL CONFIG */
+.config-panel {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(20px);
+  color: white;
+  transition: 0.4s;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -5px 0 25px rgba(0, 255, 255, 0.2);
+  border-left: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.config-panel.active {
+  right: 0;
+}
+
+.config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.config-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: cyan;
+}
+
+.config-header button {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.config-content {
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 12px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  background: rgba(0, 255, 255, 0.08);
+  border-color: cyan;
+  transform: scale(1.02);
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.details {
+  display: none;
+  font-size: 13px;
+  color: #ccc;
+  margin-top: 5px;
+}
+
+.card.active .details {
+  display: block;
+}
+
+/* INPUTS CONFIG */
+.config-panel input,
+.config-panel select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 5px;
+  background: #111;
+  color: white;
+}
+
+.config-panel button {
+  margin-top: 8px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+/* 🔒 OCULTAR CONTROLES */
+#controls.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 🔔 TOAST */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  min-width: 220px;
+  max-width: 280px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: 0.4s;
+  position: relative;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast.success {
+  border-left: 4px solid lime;
+  color: lime;
+}
+
+.toast.error {
+  border-left: 4px solid red;
+  color: #ff4d4d;
+}
+
+.toast.info {
+  border-left: 4px solid cyan;
+  color: cyan;
+}
+
+.toast-icon {
+  font-size: 18px;
+}
+
+.toast::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: currentColor;
+  animation: toastBar 3s linear forwards;
+}
+
+/* 🎞️ ANIMACIONES */
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 25px red;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes ledPulse {
+  50% {
+    box-shadow: 0 0 30px lime;
+  }
+}
+
+@keyframes toastBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
